@@ -19,13 +19,12 @@ app.use(express.json());
 
 app.use('/api/v1/seed', seedRouter);
 
-app.get('/api/v1/product/token/:token',async (req,res) => {
-  const product = await data.products.find(x => x.token === req.params.token);
-  if(product){
+app.get('/api/v1/product/token/:token', async (req, res) => {
+  const product = await data.products.find((x) => x.token === req.params.token);
+  if (product) {
     res.send(product);
-  }
-  else {
-    return res.status(404).send({message : 'Product was not found'});
+  } else {
+    return res.status(404).send({ message: 'Product was not found' });
   }
 });
 
