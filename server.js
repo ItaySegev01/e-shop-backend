@@ -13,9 +13,21 @@ const app = express();
 
 app.use(cors());
 
+app.use(express.json());
+
 //Endpoints
 
 app.use('/api/v1/seed', seedRouter);
+
+app.get('/api/v1/product/token/:token',async (req,res) => {
+  const product = await data.products.find(x => x.token === req.params.token);
+  if(product){
+    res.send(product);
+  }
+  else {
+    return res.status(404).send({message : 'Product was not found'});
+  }
+});
 
 app.get('/api/v1/products', (req, res) => {
   res.send(data.products);
