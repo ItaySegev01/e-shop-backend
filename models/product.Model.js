@@ -2,24 +2,24 @@ import mongoose from 'mongoose';
 
 const productSchema = mongoose.Schema(
   {
-    name: {
+    title: {
       type: String,
       required: true,
       unique: true,
-    },
-    description: {
-      type: String,
-      required: true,
     },
     price: {
       type: Number,
       required: true,
     },
-    image: {
+    description: {
       type: String,
       required: true,
     },
     category: {
+      type: String,
+      required: true,
+    },
+    image: {
       type: String,
       required: true,
     },
@@ -37,12 +37,12 @@ const productSchema = mongoose.Schema(
       required: true,
     },
     rating: {
-      type: Number,
-      required: true,
-    },
-    numReviews: {
-      type: Number,
-      required: true,
+      rate : {
+        type: Number
+      },
+      count: {
+        type : Number
+      }
     },
   },
   { timestamps: true }
