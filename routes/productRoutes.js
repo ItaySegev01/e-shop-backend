@@ -5,14 +5,15 @@ const productRouter = express.Router();
 
 productRouter.get('/token/:token', async (req, res) => {
   try {
-    const product = await Product.findOne({ token: req.params.token });
+    const {token} = req.params;
+    const product = await Product.findOne({token});
     if (product) {
       res.send(product);
     } else {
       return res.status(404).send({ message: 'Product was not found' });
     }
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).send({ message: error.message });
   }
 });
 
@@ -26,7 +27,7 @@ productRouter.get('/:_id', async (req, res) => {
       return res.status(404).send({ message: 'Product was not found' });
     }
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).send({ message: error.message });
   }
 });
 
@@ -35,7 +36,7 @@ productRouter.get('/', async (req, res) => {
     const products = await Product.find();
     res.send(products);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).send({ message: error.message });
   }
 });
 

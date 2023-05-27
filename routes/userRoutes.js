@@ -4,11 +4,9 @@ import expressAsyncHandler from 'express-async-handler';
 import bcrypt from 'bcryptjs';
 import { generateToken } from '../utils.js';
 
-const usertRouter = express.Router();
+const userRouter = express.Router();
 
-usertRouter.post(
-  '/signin',
-  expressAsyncHandler(async (req, res) => {
+userRouter.post('/signin', expressAsyncHandler(async (req, res) => {
     const user = await User.findOne({ email: req.body.email });
     if (user) {
       if (bcrypt.compareSync(req.body.password, user.password)) {
@@ -25,4 +23,4 @@ usertRouter.post(
   })
 );
 
-export default usertRouter;
+export default userRouter;

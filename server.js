@@ -4,7 +4,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import seedRouter from './routes/seedRoutes.js';
 import productRouter from './routes/productRoutes.js';
-import usertRouter from './routes/userRoutes.js';
+import userRouter from './routes/userRoutes.js';
 
 dotenv.config();
 const PORT = process.env.PORT || 4040;
@@ -22,13 +22,13 @@ app.use((err, req, res , next) => {
   res.status(500).send({message : err.message});
 });
 
-//Endpoints
+//endpoints
 
 app.use('/api/v1/seed', seedRouter);
 
 app.use('/api/v1/products',productRouter);
 
-app.use('/api/v1/users',usertRouter);
+app.use('/api/v1/users',userRouter);
 
 mongoose
   .connect(process.env.MONGOO_CONNECT)
