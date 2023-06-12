@@ -37,12 +37,12 @@ const productSchema = mongoose.Schema(
       required: true,
     },
     rating: {
-      rate : {
-        type: Number
+      rate: {
+        type: Number,
       },
       count: {
-        type : Number
-      }
+        type: Number,
+      },
     },
   },
   { timestamps: true }
