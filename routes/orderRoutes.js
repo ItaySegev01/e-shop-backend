@@ -47,6 +47,9 @@ orderRouter.post(
           product.countInStock -= x.quantity;
           await product.save();
         }
+        else {
+          res.status(404).send({ message: 'Out of Stock' });
+        }
       });
       const order = await newOrder.save();
       res.status(201).send({ message: 'New Order Created', order });
