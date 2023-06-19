@@ -47,7 +47,6 @@ productRouter.get(
   expressAsyncHandler(async (req, res) => {
     try {
       const categories = await Product.distinct('category');
-      console.log(categories);
       res.send(categories);
     } catch (error) {
       res.status(500).send({ message: error.message });
