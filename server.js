@@ -41,4 +41,3 @@ mongoose
     console.log(`Failed to connect to Mongo: ${error.message}`);
   });
 
-export default app;
