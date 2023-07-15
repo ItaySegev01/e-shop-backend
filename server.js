@@ -17,17 +17,17 @@ app.use(cors());
 
 app.use(express.json());
 
-app.use(express.urlencoded({extended : true}));
+app.use(express.urlencoded({ extended: true }));
 
 //endpoints
 
-app.use((err, req, res , next) => {
-  res.status(500).send({message : err.message});
+app.use((err, req, res, next) => {
+  res.status(500).send({ message: err.message });
 });
-app.use('api/v1/seed', seedRouter);
-app.use('api/v1/products',productRouter);
-app.use('api/v1/users',userRouter);
-app.use('api/v1/orders',orderRouter);
+app.use('/api/v1/seed', seedRouter);
+app.use('/api/v1/products', productRouter);
+app.use('/api/v1/users', userRouter);
+app.use('/api/v1/orders', orderRouter);
 
 mongoose
   .connect(process.env.MONGOO_CONNECT)
@@ -40,6 +40,3 @@ mongoose
   .catch((error) => {
     console.log(`Failed to connect to Mongo: ${error.message}`);
   });
-
-
- 
